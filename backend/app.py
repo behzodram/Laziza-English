@@ -15,7 +15,7 @@ app.add_middleware(
     allow_origins=[
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        "http://16.171.31.78:5500"
+        "http://16.171.31.78:8000"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -29,5 +29,6 @@ app.include_router(token_router)
 async def root():
     return {
         "status": "ok",
-        "message": "Backend is running"
+        "message": "Backend is running",
+        "Project": "Laziza English"
     }
