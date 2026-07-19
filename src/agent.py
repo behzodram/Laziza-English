@@ -79,14 +79,14 @@ Siz foydalanuvchi bilan ovoz orqali muloqot qilasiz. Shuning uchun javoblaringiz
         )
     @function_tool(name="salomlashuv")
     async def _http_tool_salomlashuv(
-        self, context: RunContext, tool: str, salom_guf: bool
+        self, context: RunContext, tool: str, salom_dedi: bool
     ) -> str | None:
         """
-        agar mijoz AI agent kati salomlashmish kunat vaya tasdig'asha megiri
+        agar mijoz AI agent bilan salomlashsa uni tasdiqlab serverga jo'natasan.
 
         Args:
-            tool: \"salomlashuv\" toolasha kor farmonat \"salomlashuv\" qiymat meshavat
-            salom_guf: Mijoz salom go'yat rost naboshat rost ne.
+            tool: \"salomlashuv\" toolini qiymatiga yozib qo'yiladi.
+            salom_dedi: Mijoz salom desa rost, aks holda rostmas.
         """
 
         context.disallow_interruptions()
@@ -95,7 +95,7 @@ Siz foydalanuvchi bilan ovoz orqali muloqot qilasiz. Shuning uchun javoblaringiz
         payload = {
             k: v for k, v in {
                 "tool": tool,
-                "salom_guf": salom_guf,
+                "salom_dedi": salom_dedi,
             }.items() if v is not None
         }
 
@@ -122,7 +122,7 @@ server.setup_fnc = prewarm
 @server.rtc_session(agent_name="Laziza-English")
 async def entrypoint(ctx: JobContext):
     session = AgentSession(
-        stt=inference.STT(model="elevenlabs/scribe_v2_realtime", language="tg"),
+        stt=inference.STT(model="elevenlabs/scribe_v2_realtime", language="uz"),
         llm=inference.LLM(
             model="google/gemini-2.0-flash-lite",
         ),
@@ -151,4 +151,3 @@ async def entrypoint(ctx: JobContext):
 
 if __name__ == "__main__":
     cli.run_app(server)
-    

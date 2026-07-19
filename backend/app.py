@@ -30,7 +30,7 @@ async def root():
     return {
         "status": "ok",
         "message": "Backend is running",
-        "version": "1.0.7",
-        "notes": "agent ga salomlashuv tool qo'shildi, tojik gapir.",
+        "version": "1.0.8",
+        "notes": "Agentga salomlashuv tool qo'shildi, o'zbek gapir.",
         "Project": "Laziza English"
     }
