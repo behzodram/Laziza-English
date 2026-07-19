@@ -15,7 +15,8 @@ app.add_middleware(
     allow_origins=[
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        "http://16.171.31.78:8000"
+        "http://16.171.31.78:8000",
+        "http://16.171.31.78:5000"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -30,7 +31,7 @@ async def root():
     return {
         "status": "ok",
         "message": "Backend is running",
-        "version": "1.0.8",
-        "notes": "Agentga salomlashuv tool qo'shildi, o'zbek gapir.",
+        "version": "1.0.9",
+        "notes": "http tool port qo'shildi",
         "Project": "Laziza English"
     }

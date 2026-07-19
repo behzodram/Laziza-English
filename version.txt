@@ -1,3 +1,4 @@
+v 1.0.8 => main: http tool port qo'shildi
 v 1.0.7 => main: Agentga salomlashuv tool qo'shildi, o'zbek gapir.
 v 1.0.6 => main: Agentga salomlashuv tool qo'shildi, tojik gapir.
 v 1.0.5 => main: agent almashtirildi
