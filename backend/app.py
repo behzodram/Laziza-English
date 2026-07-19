@@ -32,6 +32,6 @@ async def root():
         "status": "ok",
         "message": "Backend is running",
         "version": "1.0.9",
-        "notes": "http tool port qo'shildi",
+        "notes": "LLM model error checking. Locally successful, no env change.",
         "Project": "Laziza English"
     }

@@ -124,7 +124,7 @@ async def entrypoint(ctx: JobContext):
     session = AgentSession(
         stt=inference.STT(model="elevenlabs/scribe_v2_realtime", language="uz"),
         llm=inference.LLM(
-            model="google/gemini-2.0-flash-lite",
+            model="google/gemma-4-31b-it",
         ),
         tts=inference.TTS(
             model="xai/tts-1",
