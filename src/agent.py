@@ -1,4 +1,8 @@
 import logging
+from typing import Optional
+from urllib.parse import quote
+import aiohttp
+import asyncio
 from dotenv import load_dotenv
 from livekit import rtc
 from livekit.agents import (
@@ -8,9 +12,13 @@ from livekit.agents import (
     JobContext,
     JobProcess,
     TurnHandlingOptions,
+    RunContext,
+    ToolError,
     cli,
+    function_tool,
     inference,
     room_io,
+    utils,
 )
 from livekit.agents.beta.tools import EndCallTool
 from livekit.plugins import (
@@ -69,6 +77,39 @@ Siz foydalanuvchi bilan ovoz orqali muloqot qilasiz. Shuning uchun javoblaringiz
             instructions="""Greet the user and offer your assistance.""",
             allow_interruptions=True,
         )
+    @function_tool(name="salomlashuv")
+    async def _http_tool_salomlashuv(
+        self, context: RunContext, tool: str, salom_guf: bool
+    ) -> str | None:
+        """
+        agar mijoz AI agent kati salomlashmish kunat vaya tasdig'asha megiri
+
+        Args:
+            tool: \"salomlashuv\" toolasha kor farmonat \"salomlashuv\" qiymat meshavat
+            salom_guf: Mijoz salom go'yat rost naboshat rost ne.
+        """
+
+        context.disallow_interruptions()
+
+        url = "http://16.171.31.78:5000/api/tool/"
+        payload = {
+            k: v for k, v in {
+                "tool": tool,
+                "salom_guf": salom_guf,
+            }.items() if v is not None
+        }
+
+        try:
+            session = utils.http_context.http_session()
+            timeout = aiohttp.ClientTimeout(total=10)
+            async with session.post(url, timeout=timeout, json=payload) as resp:
+                if resp.status >= 400:
+                    raise ToolError(f"error: HTTP {resp.status}")
+                return await resp.text()
+        except ToolError:
+            raise
+        except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+            raise ToolError(f"error: {e!s}") from e
 
 
 server = AgentServer()
@@ -81,7 +122,7 @@ server.setup_fnc = prewarm
 @server.rtc_session(agent_name="Laziza-English")
 async def entrypoint(ctx: JobContext):
     session = AgentSession(
-        stt=inference.STT(model="elevenlabs/scribe_v2_realtime", language="uz"),
+        stt=inference.STT(model="elevenlabs/scribe_v2_realtime", language="tg"),
         llm=inference.LLM(
             model="google/gemini-2.0-flash-lite",
         ),
@@ -110,3 +151,4 @@ async def entrypoint(ctx: JobContext):
 
 if __name__ == "__main__":
     cli.run_app(server)
+    
