@@ -1,0 +1,5 @@
+v 1.0.3 => main: init
+v 1.0.2 => main: Endi agent bilan suhbat qursa bo'ladi. Dispecher Laziza. Foydalanish u-n README.txt
+# Bu Laziza-Milliy ning v 1.0.2 versiyasidan nusxa olindi va PythonAnywherega nusxalandi
+v 1.0.1 => main: FAST API + JWT
+v 1.0.0 => main: init

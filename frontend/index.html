@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher AI Voice Client</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- LiveKit Client SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/livekit-client/dist/livekit-client.umd.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Dispatcher AI</h1>
+
+    <p class="subtitle">
+        LiveKit Voice Test Client
+    </p>
+
+    <div class="card">
+
+        <label>
+            Identity
+        </label>
+
+        <input
+            id="identity"
+            type="text"
+            value="behzod"
+        >
+
+        <label>
+            Room Name
+        </label>
+
+        <input
+            id="room"
+            type="text"
+            value="test-room"
+        >
+
+        <button id="connectButton">
+            Connect
+        </button>
+
+        <button id="disconnectButton" disabled>
+            Disconnect
+        </button>
+
+    </div>
+
+    <div class="status">
+
+        <h3>Status</h3>
+
+        <p id="status">
+            Not Connected
+        </p>
+
+    </div>
+
+</div>
+
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>

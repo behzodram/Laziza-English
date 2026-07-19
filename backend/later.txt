@@ -1,0 +1,88 @@
+Ha, aynan shunday qilamiz. Hozirning o'zidayoq kelajakni hisobga olamiz.
+
+`backend/schemas/token.py` faylini quyidagicha **almashtiring**:
+
+```python
+from pydantic import BaseModel
+
+
+class TokenRequest(BaseModel):
+    identity: str
+    room_name: str
+
+
+class TokenResponse(BaseModel):
+    success: bool
+    livekit_url: str
+    token: str
+    expires_in: int
+```
+
+Bu ancha professional ko'rinish.
+
+Android javobni shunday oladi:
+
+```json
+{
+  "success": true,
+  "livekit_url": "wss://dispecher-gux1ey38.livekit.cloud",
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "expires_in": 3600
+}
+```
+
+---
+
+## Lekin shu yerda bir muhim qarorni hozir qabul qilaylik.
+
+Sizning loyihangiz oddiy chat emas. Bu **Dispatcher AI** tizimi.
+
+Shuning uchun token endpointini ham kelajakni hisobga olib yozish kerak.
+
+Masalan, Android hozir faqat:
+
+```json
+{
+  "identity": "behzod",
+  "room_name": "support-room"
+}
+```
+
+yuborishi mumkin.
+
+Lekin keyinchalik sizga quyidagilar kerak bo'lishi ehtimoli katta:
+
+```json
+{
+  "identity": "behzod",
+  "room_name": "support-room",
+  "user_name": "Behzod",
+  "role": "dispatcher",
+  "metadata": {
+    "device": "android",
+    "app_version": "1.0.0"
+  }
+}
+```
+
+Shunda Agent foydalanuvchi kimligini, qaysi ilovadan kelganini va qanday rolga ega ekanini ham biladi.
+
+### Mening tavsiyam
+
+Hozircha **ortiqcha murakkablashtirmaymiz**.
+
+`TokenRequest` ni hozircha shunday qoldiramiz:
+
+```python
+class TokenRequest(BaseModel):
+    identity: str
+    room_name: str
+```
+
+Bu MVP (birinchi ishlaydigan versiya) uchun yetarli.
+
+**Keyin**, Android va Agent muvaffaqiyatli bog'langach, biz `metadata`, `role`, `permissions` kabi maydonlarni qo'shamiz.
+
+Bu usul bilan birinchi ishlaydigan tizimni tezroq olamiz, keyin esa uni bosqichma-bosqich kengaytiramiz.
+
+**Endi navbatdagi qadam** — `livekit_service.py` ichida haqiqiy JWT token yaratishni yozish. Shu joydan Android ilovangiz haqiqiy token ola boshlaydi.
