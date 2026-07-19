@@ -31,7 +31,7 @@ async def root():
     return {
         "status": "ok",
         "message": "Backend is running",
-        "version": "1.0.9",
-        "notes": "LLM model error checking. Locally successful, no env change.",
+        "version": "1.1.0",
+        "notes": "working latest",
         "Project": "Laziza English"
     }
