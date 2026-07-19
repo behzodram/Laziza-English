@@ -1,3 +1,4 @@
+v 1.0.6 => main: agent almashtirildi
 v 1.0.5 => main: agent almashtirildi
 v 1.0.4 => main: 8000 port => http://16.171.31.78:8000/ project nom berildi.
 v 1.0.3 => main: init
