@@ -3,10 +3,19 @@
 ====================================================
 yangi qarash
 =============================
+instruction:
+    venv ga kirish.
+    Agar python-dotenv requirements ichida bo'lmasa, alohida o'rnating:
+
+    pip install python-dotenv
+
+    Keyin tekshiring:
+
+    pip show python-dotenv
 
 CMD 1 - terminalda:
     cd Backend
-    uvicorn app:app --reload
+    uvicorn app:app --host 0.0.0.0 --port 8000
     (bu komanda agentni o'zi ishga tushuradi.
     uv run python src/agent.py dev
     ni terminalda ishga tushurilmaydi.)
@@ -20,6 +29,9 @@ CMD 2 - terminalda
 
     Public IP:
     16.171.31.78:5000
+
+Browser 2 - Chromeda
+    app.js dan Backend url sozlanadi va index.html ochiladi
 
 ====================================================
 eski qarash
