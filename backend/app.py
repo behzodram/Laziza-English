@@ -31,7 +31,7 @@ async def root():
     return {
         "status": "ok",
         "message": "Backend is running",
-        "version": "1.1.0",
-        "notes": "working latest",
+        "version": "1.1.1",
+        "notes": "agent name update",
         "Project": "Laziza English"
     }
