@@ -13,10 +13,10 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-        "http://16.171.31.78:8000",
-        "http://16.171.31.78:5000"
+        "http://127.0.0.1:5500",            # VS Code Live Server
+        "http://localhost:5500",            # VS Code Live Server
+        "http://16.171.31.78:8000",         # AWS EC2 instance
+        "https://laziza-english.web.app/"   # Firebase Hosting
     ],
     allow_credentials=True,
     allow_methods=["*"],
