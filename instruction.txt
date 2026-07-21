@@ -1,0 +1,65 @@
+: "user", "text": "kodida application pi emas, balki lift kit service pi o'zimni
+ backendimda o'zigina mana shu paytida agentning..."}
+2026-07-20 05:25:00,618 - DEBUG livekit.agents - received user transcript {"user
+_transcript": "Joyiga, ya'ni o'n birinchi qatorga kodni, o'n birinchi qatorga ag
+entning yozilgan laziza english deb yozganman. Xuddi mana shu narsa boshqa lokal
+da bo'ladimi, yoki o'sha OVSni o'zida bo'ladimi agentka ishga tushirayotgan dagi
+sini agent nomi bir xil bo'lishi kerak. O'shaning sen bilan birga muloqot qilyot
+gan bo'lamiz, ya'ni frontendim, frontendim sani backend URL'iga ulangan.", "lang
+uage": "tr", "transcript_delay": 2.5862808227539062}
+2026-07-20 05:25:00,944 - DEBUG livekit.plugins.turn_detector - eou prediction {
+"eou_probability": 0.008964208886027336, "duration": 0.309, "input": "<|im_start
+|>assistant\ntushundim siz agent nomini va tilini sozlash haqida gapiryapsiz aga
+r sizga ingliz tilidagi agent kerak bo'lsa men bemalol ingliz tilida muloqot qil
+a olaman hozir muloqotni ingliz tiliga o'tkazaymi<|im_end|>\n<|im_start|>user\ni
+shlab qilaman sizni<|im_end|>\n<|im_start|>assistant\ntushunishimcha siz meni so
+zlash yoki ustimda ishlashni rejalashtiryapsiz agar sizga texnik yordam yoki mas
+lahat kerak bo'lsa bemalol so'rang hozir biror narsani aniqlashtirib olishimiz k
+erakmi<|im_end|>\n<|im_start|>user\nmenimda proyektni qanday ishga tushirishimni
+ tushunib olishim kerak xo'sh tushunishim bo'yicha men avs serverga backend kodi
+ni yoraman va bu backend kodida application pi emas balki lift kit service pi o'
+zimni backendimda o'zigina mana shu paytida agentning joyiga ya'ni o'n birinchi
+qatorga kodni o'n birinchi qatorga agentning yozilgan laziza english deb yozganm
+an xuddi mana shu narsa boshqa lokalda bo'ladimi yoki o'sha ovsni o'zida bo'ladi
+mi agentka ishga tushirayotgan dagisini agent nomi bir xil bo'lishi kerak o'shan
+ing sen bilan birga muloqot qilyotgan bo'lamiz ya'ni frontendim frontendim sani
+backend url'iga ulangan"}
+2026-07-20 05:25:00,946 - DEBUG livekit.agents - eot prediction {"probability":
+0.008964208886027336, "unlikely_threshold": 0.0045, "endpointing_delay": 0.5, "l
+anguage": "tr", "trigger": "stt", "from_cache": false}
+2026-07-20 05:25:00,948 - DEBUG livekit.agents - user turn committed {"last_spea
+king_time": 1784507098.0320365, "last_final_transcript_time": 1784507100.620009,
+ "speech_start_time": 1784507073.8020828, "delay_completed": false, "source": "s
+tt", "end_of_turn_probability": 0.008964208886027336, "unlikely_threshold": 0.00
+45}
+2026-07-20 05:25:00,989 - DEBUG livekit.agents - conversation_item_added {"role"
+: "user", "text": "Joyiga, ya'ni o'n birinchi qatorga kodni, o'n birinchi qatorg
+a agentning yozilgan laziza english deb yozganman. Xuddi mana shu narsa boshqa l
+okalda bo'ladimi, yoki o'sha OVSni o'zida bo'ladimi agentka ishga tushirayotgan
+dagisini agent nomi bir xil bo'lishi kerak. O'shaning sen bilan birga muloqot qi
+lyotgan bo'lamiz, ya'ni frontendim, frontendim sani backend URL'iga ulangan."}
+2026-07-20 05:25:45,221 - DEBUG livekit.agents - conversation_item_added {"role"
+: "assistant", "text": "Tushunishimcha, siz LiveKit xizmatini AWS serverda ishga
+ tushirmoqchisiz va agent nomi backend kodingizda ko'rsatilgan bilan bir xil bo'
+lishi kerakligini so'rayapsiz.\n\nHa, agentning nomi ham backendda, ham LiveKit
+tizimida bir xil bo'lishi shart, aks holda frontend va backend bir-birini topa o
+lmaydi. Agar siz kodni AWS serverga joylashtirgan bo'lsangiz, agent nomi serverd
+agi sozlamalarda aniqlangan bo'lishi kerak.\n\nLokalda sinab ko'rmoqchi bo'lsang
+iz, lokal backendingizdagi agent nomi bilan LiveKit agentining nomi bir xil ekan
+ligiga ishonch hosil qiling.\n\nSizda hozir agent nomi bilan bog'liq xatolik yuz
+aga kelyaptimi?"}
+
+
+CMD 1: cd /
+    uv run python src/agent.py dev
+CMD 2: cd backend/
+    uvicorn app:app --host 0.0.0.0 --port 8000
+
+EDIT: frontend/api.js -> backend url To:
+    http://16.171.31.78:8000
+
+Give Groups rule for your AWS
+    open 8000 port
+    
+Open Browser and Type:
+    http://127.0.0.1:5500/frontend/

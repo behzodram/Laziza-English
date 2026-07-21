@@ -1,3 +1,4 @@
+v 1.1.2 => main: files dir changed, Env changed, agent changed.
 v 1.1.1 => main: agent name update
 v 1.1.0 => main: working latest
 v 1.0.9 => main: LLM model error checking. Locally succes no env change.
