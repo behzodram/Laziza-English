@@ -8,7 +8,7 @@ from config import (
     LIVEKIT_URL,
 )
 
-AGENT_NAME = "Laziza-English"
+AGENT_NAME = "Laziza"
 
 
 async def create_access_token(identity: str, room_name: str) -> dict:
