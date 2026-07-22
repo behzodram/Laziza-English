@@ -43,3 +43,5 @@ uv run python src/agent.py console
 
 global test
 uv run python src/agent.py dev
+
+sudo lsof -i :8000

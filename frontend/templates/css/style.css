@@ -77,6 +77,15 @@ button {
     background: #b91c1c;
 }
 
+#micButton {
+    background: #f59e0b;
+    color: white;
+}
+
+#micButton:hover {
+    background: #d97706;
+}
+
 button:disabled {
     opacity: .5;
     cursor: not-allowed;

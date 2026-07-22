@@ -32,7 +32,6 @@ logger = logging.getLogger("agent-Laziza")
 
 load_dotenv(".env.local")
 
-
 class DefaultAgent(Agent):
     def __init__(self) -> None:
         super().__init__(
@@ -331,12 +330,12 @@ async def entrypoint(ctx: JobContext):
             model="google/gemma-4-31b-it",
             # model="openai/gpt-4.1-nano",                                              # $0.0004/min
         ),
-        # tts=inference.TTS(
-        #     model="xai/tts-1",
-        #     voice="ara",
-        #     language="multi"
-        # ),
-        tts=azure.TTS(voice="uz-UZ-MadinaNeural"),                                    # $0.0128/min
+        tts=inference.TTS(
+            model="xai/tts-1",
+            voice="ara",
+            language="multi"
+        ),
+        # tts=azure.TTS(voice="uz-UZ-MadinaNeural"),                                    # $0.0128/min
         turn_handling=TurnHandlingOptions(turn_detection=MultilingualModel()),
         vad=ctx.proc.userdata["vad"],
         preemptive_generation=True,
